@@ -438,15 +438,15 @@ namespace NinjaTrader.NinjaScript.SuperDomColumns
         }
 
 
-        [Display(Name = "Aggregate Trades", Order = 0, GroupName = "Parameters")]
+        [Display(Name = "Aggregate Trades", Order = 1, GroupName = "Parameters")]
         public bool AggregateTrades
         { get; set; }
 
-        [Display(Name = "Trade Filter Size", Order = 1, GroupName = "Parameters")]
+        [Display(Name = "Trade Filter Size", Order = 2, GroupName = "Parameters")]
         public int TradeFilterSize
         { get; set; }
 
-        [Display(Name = "Block Trade Size", Order = 2, GroupName = "Parameters")]
+        [Display(Name = "Block Trade Size", Order = 3, GroupName = "Parameters")]
         public int BlockSize
         { get; set; }
 
