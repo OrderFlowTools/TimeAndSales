@@ -19,3 +19,11 @@ This version also implements limiting T&S data held in memory during the session
 Enjoy!
 
 ## Screenshots
+### Default configuration: Price, Size, [Block, Ice], Timestamp and a Filtered trades subpanel.
+![Full Config](https://github.com/OrderFlowTools/TimeAndSales/blob/main/screenshots/time_sales_config_1.PNG)
+
+### Without Timestamps
+![No Timestamps](https://github.com/OrderFlowTools/TimeAndSales/blob/main/screenshots/time_sales_config_2.PNG)
+
+### Shortened Price, Without Timestamps
+![Shortened Price, No Timestamps](https://github.com/OrderFlowTools/TimeAndSales/blob/main/screenshots/time_sales_config_3.PNG)
