@@ -1,4 +1,4 @@
-# TimeAndSales
+# TimeAndSales SuperDOM Column
 Time and Sales Column for the Ninjtrader v8 SuperDOM
  
 >Giving credit where credit is due. This custom time and sales column 
