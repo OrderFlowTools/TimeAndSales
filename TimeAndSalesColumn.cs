@@ -36,7 +36,7 @@ using Point = System.Windows.Point;
  * Enjoy!
  * Gem Immanuel (gemify@gmail.com)
  */
-namespace NinjaTrader.NinjaScript.SuperDomColumns
+namespace NinjaTrader.NinjaScript.SuperDomColumns.Gemify
 {
     /// <summary>
     /// Class that represents a Time & Sales entry.
@@ -106,6 +106,8 @@ namespace NinjaTrader.NinjaScript.SuperDomColumns
                 DisplayTime = true;
                 DisplayFullPrice = true;
                 DisplayFilteredPanel = true;
+                DisplayICE = true;
+                DisplayBlocks = true;
 
                 // Filtered panel takes up 40% of SuperDom columns
                 FilteredPanelSizePerc = 40;
@@ -334,11 +336,18 @@ namespace NinjaTrader.NinjaScript.SuperDomColumns
             }
             sb.Append(price);
             sb.Append("\t");
-            sb.Append(String.Format("{0}\t{1}\t{2}", tsEntry.Size.ToString("N0").PadLeft(10), tsEntry.Size > BlockSize ? "BLK" : " ", tsEntry.Ice ? "ICE" : " "));
+            sb.Append(String.Format("{0}", tsEntry.Size.ToString("N0").PadLeft(10)));
+            if (DisplayBlocks) {
+                sb.Append("\t" + (tsEntry.Size > BlockSize ? "BLK" : " "));
+            }
+            if (DisplayICE)
+            {
+                sb.Append("\t" + (tsEntry.Ice ? "ICE" : " "));
+            }
             if (DisplayTime)
             {
                 sb.Append("\t");
-                sb.Append(tsEntry.Time.ToLongTimeString());
+                sb.Append(tsEntry.Time.ToString("hh:mm"));
             }
 
             String entryText = sb.ToString();
@@ -438,33 +447,41 @@ namespace NinjaTrader.NinjaScript.SuperDomColumns
         }
 
 
-        [Display(Name = "Aggregate Trades", Order = 1, GroupName = "Parameters")]
+        [Display(Name = "Aggregate Trades", Order = 100, GroupName = "Parameters")]
         public bool AggregateTrades
         { get; set; }
 
-        [Display(Name = "Trade Filter Size", Order = 2, GroupName = "Parameters")]
+        [Display(Name = "Trade Filter Size", Order = 200, GroupName = "Parameters")]
         public int TradeFilterSize
         { get; set; }
 
-        [Display(Name = "Block Trade Size", Order = 3, GroupName = "Parameters")]
+        [Display(Name = "Block Trade Size", Order = 300, GroupName = "Parameters")]
         public int BlockSize
         { get; set; }
 
 
-        [Display(Name = "Display Timestamp", Order = 1, GroupName = "Display")]
+        [Display(Name = "Display Timestamp", Order = 100, GroupName = "Display")]
         public bool DisplayTime
         { get; set; }
 
-        [Display(Name = "Display Full Price", Order = 2, GroupName = "Display")]
+        [Display(Name = "Display Full Price", Order = 200, GroupName = "Display")]
         public bool DisplayFullPrice
         { get; set; }
 
-        [Display(Name = "Display Filtered SubPanel", Order = 3, GroupName = "Display")]
+        [Display(Name = "Display Block Markers", Order = 250, GroupName = "Display")]
+        public bool DisplayBlocks
+        { get; set; }
+
+        [Display(Name = "Display ICE Markers", Order = 275, GroupName = "Display")]
+        public bool DisplayICE
+        { get; set; }
+
+        [Display(Name = "Display Filtered SubPanel", Order = 300, GroupName = "Display")]
         public bool DisplayFilteredPanel
         { get; set; }
 
         [Range(20.0, 80.0)]
-        [Display(Name = "Filtered Panel Size (% of SuperDOM rows)", Description = "Min: 20%, Max: 80%. Size of filtered panel as % of the SuperDom Rows.", Order = 4, GroupName = "Display")]
+        [Display(Name = "Filtered Panel Size (% of SuperDOM rows)", Description = "Min: 20%, Max: 80%. Size of filtered panel as % of the SuperDom Rows.", Order = 400, GroupName = "Display")]
         public double FilteredPanelSizePerc
         { get; set; }
 
